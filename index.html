@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .section-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: right;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        .time-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-5').style.display = 'none';
+                document.getElementById('activity-1').style.display = 'none';
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - H1 - M10</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- Actividad 1 (4 pasos) -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('introActivity1')">
+        <div class="title">
+            <span>🌟 Actividad 1: Saludo y Ritual Gnius Club (4 pasos)</span>
+            <span>⏰ Tiempo: 2.5 minutos</span>
+        </div>
+        <div class="subtitle">Preparación y objetivos de la misión</div>
+    </div>
+    <div id="introActivity1" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 2 "Bienvenida"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Hola, Genios. Hoy trabajaremos con la IA para abordar un nuevo reto.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar Diapositiva 3 "¿Cómo Están?"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Antes de empezar, quiero saber cómo se sienten hoy. Si están listos para debatir y aprender, agiten las manos. Si se sienten un poco nerviosos, solo pongan las manos en sus piernas.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (0.5 minutos): Proyectar Diapositiva 4 "Gracias por Asistir"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Como siempre, juntemos nuestras manos en agradecimiento por la oportunidad de aprender algo nuevo hoy. Gracias por asistir, Genios.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (0.5 minutos): Proyectar Diapositiva 5 "Objetivos de la Misión"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Hoy tenemos dos objetivos importantes: 1. Preparar argumentos sólidos usando la IA para un debate. 2. Desarrollar técnicas efectivas de persuasión y contraargumentos.
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Actividad 2 (3 pasos) -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('stateChange2')">
+        <div class="title">
+            <span>🧘‍♂️ Actividad 2: State Change (3 pasos)</span>
+            <span>⏰ Tiempo: 2 minutos</span>
+        </div>
+        <div class="subtitle">Actividad rápida para despejar la mente</div>
+    </div>
+    <div id="stateChange2" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 6 "Pies en el Piso"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Vamos a tomar un pequeño descanso para despejar la mente. Siéntense con los pies bien plantados en el suelo y sientan el contacto con el piso durante 1 minuto.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar Diapositiva 7 "Cronómetro - 1 Minuto"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                N/A
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (0.5 minutos): Proyectar Diapositiva 8 "Reflexión sobre Pies en el Piso"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Este ejercicio nos ayuda a reconectar con el presente y enfocarnos mejor en lo que sigue. Es un buen momento para dejar de lado cualquier distracción y estar más presentes.
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Actividad 3 (6 pasos) -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('teamGnius')">
+        <div class="title">
+            <span>👥 Actividad 3: Team Gnius (6 pasos)</span>
+            <span>⏰ Tiempo: 4 minutos</span>
+        </div>
+        <div class="subtitle">Formación de equipos y organización para el reto</div>
+    </div>
+    <div id="teamGnius" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 8 "Formación de Equipos"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Genios, ahora formaremos equipos de 2 o 3 personas, con el objetivo de tener un total de 8 equipos. Tienen 1 minuto para organizarse.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar Diapositiva 9 "Cronómetro - 1 Minuto"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                N/A
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (0.5 minutos): Proyectar Diapositiva 10 "Recoger las Magic Tablets"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Ahora que ya tienen a su equipo, les pido que un representante de cada equipo pase a recoger las Magic Tablets. Tienen 1 minuto.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (1 minuto): Proyectar Diapositiva 11 "Cronómetro - 1 Minuto"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                N/A
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 5 (0.5 minutos): Proyectar Diapositiva 12 "División de Equipos en Facciones"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Ahora vamos a dividir los equipos en dos facciones. De este lado del salón colocaremos 4 equipos y del otro lado los otros 4. Esta división será clave para el challenge de hoy. Tienen 30 segundos para acomodarse.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 6 (0.5 minutos): Proyectar Diapositiva 13 "Cronómetro - 30 Segundos"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                N/A
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Actividad 4 (19 pasos) -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">
+            <span>🏆 Actividad 4: Challenge (19 pasos)</span>
+            <span>⏰ Tiempo: 32 - 42 minutos</span>
+        </div>
+        <div class="subtitle">Debate sobre la prioridad entre protección ambiental y desarrollo económico</div>
+    </div>
+    <div id="challenge" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 14 "Challenge - Título"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Genios, hoy realizaremos un debate sobre si México debe priorizar la protección ambiental sobre el desarrollo económico. Cada equipo tendrá un rol y usaremos la IA para fortalecer nuestros argumentos. ¡Vamos a empezar!
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (0.5 minutos): Proyectar Diapositiva 15 "Asignación de Equipos y Roles"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Vamos a dividir los equipos en dos facciones: los que priorizan el medio ambiente y los que priorizan el desarrollo económico. Dentro de cada equipo, tendrán roles específicos como científico ambiental, economista, líder empresarial o funcionario gubernamental.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Proyectar Diapositiva 16 "Cronómetro - 1 Minuto"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                N/A
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (0.5 minutos): Proyectar Diapositiva 17 "Entender el Tema"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Cada equipo deberá discutir brevemente su posición y sus conocimientos iniciales sobre las políticas ambientales y el desarrollo económico en México. Es importante que tengan clara su postura antes de comenzar con los prompts.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 5 (2 minutos): Proyectar Diapositiva 18 "Cronómetro - 2 Minutos"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                N/A
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 6 (0.5 minutos): Proyectar Diapositiva 19 "Investigación con Prompts"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Cada equipo utilizará prompts de rol para investigar sobre su tema. Pueden obtener datos específicos según el rol que les fue asignado. Por ejemplo, 'Eres un científico ambiental, proporciona datos sobre los efectos de la contaminación en los ecosistemas de México'.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 7 (3 minutos): Proyectar Diapositiva 20 "Cronómetro - 3 Minutos"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                N/A
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 8 (0.5 minutos): Proyectar Diapositiva 21 "Desarrollo de Argumentos"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Con la información obtenida, cada equipo debe desarrollar argumentos sólidos, estructurados y lógicos. Recuerden, tienen un máximo de 30 segundos por exposición.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 9 (3 minutos): Proyectar Diapositiva 22 "Cronómetro - 3 Minutos"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                N/A
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 10 (0.5 minutos): Proyectar Diapositiva 23 "Preparación de Réplicas"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Anticipen los puntos que podrían plantear los equipos opuestos y desarrollen contraargumentos efectivos. Pueden usar la IA para ayudarse con prompts del tipo: '¿Qué puntos podrían plantear los oponentes y cómo podemos contrarrestarlos?'.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 11 (3 minutos): Proyectar Diapositiva 24 "Cronómetro - 3 Minutos"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                N/A
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 12 (0.5 minutos): Proyectar Diapositiva 25 "Prepararse para el Debate"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Cada equipo debe seleccionar un portavoz y practicar sus presentaciones. Aunque solo uno de ustedes hablará, el resto del equipo puede apoyarlo durante el debate, y es recomendable seguir utilizando la IA para afinar los detalles.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 13 (3 minutos): Proyectar Diapositiva 26 "Cronómetro - 3 Minutos"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                N/A
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 14 (0.5 minutos): Proyectar Diapositiva 27 "Realización del Debate"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Ahora vamos a dar inicio a nuestro debate. Cada portavoz tendrá 30 segundos para exponer sus argumentos, y espero que todos presenten sus mejores ideas con claridad y respeto. (Nota para el maestro: Refiera a la guía proporcionada para seguir la estructura formal del debate.)
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 15 (10 - 20 minutos): Proyectar Diapositiva 28 "Cronómetro - 20 Minutos"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                N/A
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 16 (0.5 minutos): Proyectar Diapositiva 29 "Reflexión Final"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Es momento de reflexionar sobre lo que hemos aprendido. ¿Cómo ayudó la IA a desarrollar sus argumentos? ¿Qué tan efectivos fueron los argumentos presentados? Piensen en cómo podemos equilibrar los intereses ambientales y económicos.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 17 (2 minutos): Proyectar Diapositiva 30 "Cronómetro - 2 Minutos"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                N/A
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 18 (0.5 minutos): Proyectar Diapositiva 31 "Revisión de Objetivos"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Hoy hemos cumplido nuestros objetivos de la misión: preparar argumentos para un debate usando la IA y desarrollar técnicas de persuasión y contraargumentos.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 19 (0.5 minutos): Proyectar Diapositiva 32 "You've got Mon-e"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                ¡Felicidades, Genios! Han hecho un gran trabajo hoy y aquí está su recompensa: ¡Han ganado Mon-e!
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Actividad 5 (3 pasos) -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('honorDojo')">
+        <div class="title">
+            <span>🎖️ Actividad 5: Honor de Dojo (3 pasos)</span>
+            <span>⏰ Tiempo: 1.5 minutos</span>
+        </div>
+        <div class="subtitle">Finalización y recogida de materiales</div>
+    </div>
+    <div id="honorDojo" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 33 "Honor de Dojo"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Genios, hemos llegado al final de nuestra misión de hoy. Antes de irnos, les pido que cada equipo pase al frente y me entregue las Magic Tablets. ¡Gracias por su gran trabajo!
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</body>
+</html>
